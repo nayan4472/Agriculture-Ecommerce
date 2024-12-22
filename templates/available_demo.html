@@ -1,0 +1,12 @@
+{% include "header.html" %}
+
+{%include 'alert.html' %}
+
+ <form action="/bookform" method="POST">
+    {% csrf_token %}
+    <center>
+        <button type="submit" class="btn btn-success">Book</button>
+    </center>
+ </form>
+{{rid.rid}}
+{% include "footer.html" %}

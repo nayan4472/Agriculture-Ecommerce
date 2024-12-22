@@ -1,0 +1,20 @@
+{% include "header.html" %}
+
+    <center>
+        <h1>Update Resource Booking Form....?!</h1>
+        <form method="post" action='/update/{{data.bid}}'>
+            {% csrf_token %}
+            Resource Name:<input type="text" name="rid" value="{{data.rid.rname}}"><br><br>
+
+            Faculty Name:<input type="text" name="uname" value="{{data.uname}}"><br><br>
+            Start Date : <input type="date" name="sdate" value="{{data.sdate}}"><br><br>
+             End Date : <input type="date" name="edate" value="{{data.edate}}"><br><br>
+            Start Tiime :  <input type="time" name="stime" id="stime" value="{{data.stime}}"><br><br>
+            End Time : <input type="time" name="etime" id="etime" value="{{data.etime}}"><br><br> 
+            Description : <input type="text" name="desc" id="desc" value="{{data.desc}}"><br><br>
+            Total Participent : <input type="text" name="tot" id="tot" value="{{data.tot}}"><br><br>
+                       <input type="submit" value="Submit">
+        </form>
+    </center>
+
+{% include "footer.html" %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Managment</title>
+    {% load static %}
+    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/header_footer.css' %}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <img src="/static/image/logo2.png" alt="">
+        </div>
+        <div class="title">
+            <p class="text1">L.J institute of Computer Application</p>
+            <b><p class="text2">Resource Booking Managment System</p></b>
+        </div>
+    </div>
+    <div class="slider">
+        <img src="/static/image/lj3.jpg" alt="" width=100% height=450px>
+    </div>
+    <br>
+
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/reg.css' %}">
+{%include 'alert.html' %}
+    <div class="reg">
+        <h1>Register Form....!</h1>
+        <div class="form">
+            <form method="post" action="/reg">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="exampleInputUser">User Name</label>
+                  <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="user" placeholder="Enter Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail">Email</label>
+                    <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" name="email" placeholder="Enter Username" required>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" name="pass1" id="exampleInputPassword1" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Comfirm Password</label>
+                    <input type="password" class="form-control" name="pass2" id="exampleInputPassword1" placeholder="Password" required>
+                  </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>            
+        </div> 
+        <br>
+                if you dont have't account <a href="/login">Click Here</a> 
+    </div>
+
+
+{% include "footer.html" %}

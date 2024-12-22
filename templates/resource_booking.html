@@ -1,0 +1,63 @@
+{% include "header.html" %}
+{%include 'alert.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <div class="booking_form">
+        <h1>Book Resource</h1>
+        <br>
+        <div class="form">
+            <form method="POST" action="resource_booking">
+                {% csrf_token %}
+                {% comment %} {{ forms.as_p }} {% endcomment %}
+                 <div class="form-group">
+                    <label for="exampleInputPassword1">Resource Name : </label>
+                    <br>
+                           
+                    <select name="rid" class="form-control">
+                        <option value="" disabled="true">-- Select Resource --</option>
+                        {% for d in data %}
+                             <option value="{{d.rid}}" class="form-control">{{d.rname}}</option>
+                        {% endfor %}
+                      </select>
+                </div> 
+               
+                <div class="form-group">
+                    <label for="exampleInputPassword1">User Name : </label>
+                    <input type="text" class="form-control" name="uname" value="{{request.session.user}}"  id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Start Date : </label>
+                    <input type="date" class="form-control" name="sdate" id="date" min="{% now 'Y-m-d' %}" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">End Date : </label>
+                    <input type="date" class="form-control" name="edate" id="date" min="{% now 'Y-m-d' %}" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Start Tiime : </label>
+                    <input type="time" class="form-control" name="stime" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">End Tiime : </label>
+                    <input type="time" class="form-control" name="etime" id="exampleInputPassword1">
+                </div> 
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Description : </label>
+                    <input type="text" class="form-control" name="desc" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Total Participent : </label>
+                    <input type="text" class="form-control" name="tot" id="exampleInputPassword1">
+                </div>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </form>          
+        </div>
+    </div>
+
+    {% comment %} <script>
+        var today = new Date().toISString().split('T') [0];
+        document.getElementById('date').setAttribute("max",today);
+    </script> {% endcomment %}
+
+{% include "footer.html" %}

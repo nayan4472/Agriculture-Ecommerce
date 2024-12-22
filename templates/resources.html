@@ -1,0 +1,27 @@
+{% include 'header.html' %}
+<style>
+  .custom-select{
+    padding-left: 650px;
+  }
+select{
+  height: 40px;
+  border-radius: 6px;
+  width:250px;
+  text-align:center;
+}
+</style>
+<form action="/available" method="post">
+  {% csrf_token %}
+  <div class="custom-select">
+    <select name="rid">
+      <option value="" disabled="true">-- Select Resource --</option>
+      {% for d in data %}
+           <option value="{{d.rid}}" >{{d.rname}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <br>
+  <center><input type="submit" value="Check Avilable"></center>
+</form>
+
+{% include 'footer.html' %}

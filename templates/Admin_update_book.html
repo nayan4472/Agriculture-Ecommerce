@@ -1,0 +1,45 @@
+{% include "Admin_header.html" %}
+
+    <div class="container">
+        {%include 'alert.html' %}
+        <center><h1>Update </h1></center>
+        <br><br>
+        <form method="post" action="{{data.bid}}">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputUser" value="{{data.rid.rname}}" aria-describedby="emailHelp" name="resource_name" placeholder="Enter Resource Name">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputUser" value="{{data.uname}}" aria-describedby="emailHelp" name="uname" placeholder="Enter Faculty Name">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="date" class="form-control" id="exampleInputUser"  value="{{data.sdate}}" aria-describedby="emailHelp" name="sdate" min="{% now 'Y-m-d' %}" required placeholder="Enter Starting Date">
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="date" class="form-control" id="exampleInputUser" value="{{data.edate}}" aria-describedby="emailHelp" name="edate" min="{% now 'Y-m-d' %}" required placeholder="Enter Endind Date">
+              </div>
+              <br>
+            <div class="form-group">
+                <input type="time" class="form-control" id="exampleInputUser" value="{{data.stime}}" aria-describedby="emailHelp" name="stime" placeholder="Enter Starting Time">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="time" class="form-control" id="exampleInputUser" value="{{data.etime}}" aria-describedby="emailHelp" name="etime" placeholder="Enter Endind Time">
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputUser" value="{{data.desc}}" aria-describedby="emailHelp" name="desc" placeholder="Enter Description">
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputUser" value="{{data.tot}}" aria-describedby="emailHelp" name="tot" placeholder="Enter Total Participent">
+              </div>
+              <br>              
+            <center><button type="submit" class="btn btn-primary">Update Booking</button></center>
+        </form>
+    </div>
+
+{% include "Admin_footer.html" %}

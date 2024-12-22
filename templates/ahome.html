@@ -1,0 +1,18 @@
+{% include 'Admin_header.html' %}
+
+<div class="container">
+    {%include 'alert.html' %}
+    <center><h1>Add Resources</h1></center>
+    <br><br>
+    <form method="post" action="add">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="rname" placeholder="Enter Resource Name">
+        </div>
+        <br> 
+        {% comment %} {{form.as_p}} {% endcomment %}
+        <center><button type="submit" class="btn btn-primary">Add Resource</button></center>
+    </form>
+</div>
+
+{% include 'Admin_footer.html' %}

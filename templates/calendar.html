@@ -1,0 +1,77 @@
+<!-- calendar.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+</head>
+<body>
+    {% comment %} <h1>Event Calendar - {{ month }} {{ year }}</h1>
+    <div class="calendar">
+        {{ calendar|safe }}
+    </div>
+    
+    <script>
+        // Function to handle the click event on a date
+        function handleDateClick(year, month, day) {
+            var selectedDate = `${year}-${month}-${day}`;
+            
+            // Send the selected date to the Django view using AJAX
+            $.ajax({
+                type: 'POST',
+                url: '/perform_task/',
+                data: {
+                    selected_date: selectedDate,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',  // Add the CSRF token
+                },
+                success: function(response) {
+                    // Handle the response from the server
+                    alert(response.result);
+                },
+                error: function(response) {
+                    // Handle errors if needed
+                    console.error(response);
+                }
+            });
+        }
+        
+        // Add click event listeners to each date cell
+        var dateCells = document.querySelectorAll('.date');
+        dateCells.forEach(function(cell) {
+            var date = cell.textContent;
+            cell.addEventListener('click', function() {
+                var year = {{ year }};
+                var month = {{ month }};
+                handleDateClick(year, month, date);
+            });
+        });
+    </script> {% endcomment %}
+
+    <table>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+        {% for week in cal %}
+        <tr>
+            {% for day_data in week %}
+            <td id="{% if day_data.day < current_day and year == current_year and month == current_month or year < current_year or month < current_month and year == current_year %}past-date{% endif %}" class=" 
+            {% if day_data.color == 'yellow' %}yellow{% elif day_data.color == 'red' %}red{% else %}green{% endif %}
+            {% if day_data.day is none and not day_data.booked %}past-date{% endif %}">
+            {% if day_data.day %}
+            <a href="{% url 'booking_details' year=year month=month day=day_data.day resource_id=resource_id %}">
+                {{ day_data.day }}
+            </a>
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% include "Admin_header.html" %}
+
+{% comment %} Start Content {% endcomment %}
+
+<div class="container">
+    {%include 'alert.html' %}
+    <center><h1>Update Admin</h1></center>
+    <br><br>
+    <form method="POST" action="{{stu.id}}">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="user" placeholder="Enter username" value="{{data.user}}" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="email" placeholder="Enter Email" value="{{data.email}}" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="pass1" placeholder="Enter Password" value="{{data.pass1}}" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="pass2" placeholder="Enter Confirm Password" value="{{data.pass2}}" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="roll" placeholder="Enter Roll" value="{{data.roll}}" required>
+        </div>
+        <br>
+        <center><button type="submit" class="btn btn-primary">Update Admin</button></center>
+    </form>
+</div>
+
+{% comment %} End Content {% endcomment %}
+ {% include "Admin_footer.html" %}

@@ -1,0 +1,150 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Managment</title>
+    {% load static %}
+    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/header_footer.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet"/>
+
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <img src="/static/image/logo2.png" alt="">
+        </div>
+        <div class="title">
+            <p class="text1">L.J institute of Computer Application</p>
+            <b><p class="text2">Resource Booking Managment System</p></b>
+        </div>
+    </div>
+    <br><br>
+
+<center>
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <div class="card">
+          <img src="/static/image/profile.jpeg" alt="John" style="width:100%">
+          <h1>{{request.session.user}}</h1>
+          <p class="title">User & Client </p>
+          <p>{{data.email}}</p>
+          <a href="#"><i class="fa fa-dribbble"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <p><a href="user_logout"><button>Logout</button></a></p>
+        </div>
+</center>
+<br>
+
+{% include 'footer.html' %} {% endcomment %}
+
+<center>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    {% load static %}
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+    <!-- Add your CSS links and other meta tags here -->
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+
+    {% comment %} <section class="profile-info">
+        <div class="profile-picture">
+            {% load static %}
+            <img src="/static/image/profile2.jpg" alt="User's Profile Picture" style="height:35% ">
+        </div>
+        <div class="user-details">
+            <h2>{{request.session.user}}</h2>
+            <p>Email: {{ data.email }}</p>
+            <p>Password: {{ data.pass1 }}</p>
+            <p>Confirm Password: {{ data.pass2 }}</p>
+        </div>
+    </section> {% endcomment %}
+
+    <aside class="profile-card">
+        <header>
+          <!-- here’s the avatar -->
+          <a target="_blank" href="#">
+            <img src="/static/image/profile2.jpg" class="hoverZoomLink">
+          </a>
+      
+          <!-- the username -->
+          <h1>
+            {{request.session.user}}
+                </h1>
+      
+          <!-- and role or location -->
+          <h2>
+            {{ data.email }}
+                </h2>
+      
+        </header>
+      
+        <!-- bit of a bio; who are you? -->
+        <div class="profile-bio">
+
+            <p>
+                It takes monumental improvement for us to change how we live our lives. Design is the way we access that improvement.
+              </p>
+      
+        </div>
+      
+        <!-- some social links to show off -->
+        <ul class="profile-social-links">
+          <li>
+            <a target="_blank" href="edit1/{{data.id}}">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="delete_profile/{{data.id}}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="/home">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="/index">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+    {% comment %} <section class="profile-bio">
+        <h2>About Me</h2>
+        <p>{{ user.profile.bio }}</p>
+    </section>
+
+    <section class="profile-activity">
+        <h2>Recent Activity</h2>
+        <!-- Add recent activity content here -->
+    </section> {% endcomment %}
+
+    <!-- Add more sections for additional user profile information -->
+
+    {% comment %} <footer>
+        <p>&copy; 2023 Your Website Name</p>
+    </footer> {% endcomment %}
+
+    
+</body>
+</html>
+
+</center>

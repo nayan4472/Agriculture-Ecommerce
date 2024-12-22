@@ -1,0 +1,69 @@
+{% include "header.html" %}
+
+{%include 'alert.html' %}
+
+{% comment %} <table>
+  <tr>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>  
+      <th>Sun</th>
+  </tr>
+  {% for week in cal %}
+  <tr>
+      {% for day_data in data %}
+      <td id="{% if day_data.stdate < current_day and year == current_year and month == current_month or year < current_year or month < current_month and year == current_year %}past-date{% endif %}" class=" 
+      {% if day_data.color == 'yellow' %}yellow{% elif day_data.color == 'red' %}red{% else %}green{% endif %}
+      {% if day_data.day is none and not day_data.booked %}past-date{% endif %}">
+      {% if day_data.day %}
+      <a href="{% url 'booking_details' year=year month=month day=day_data.day resource_id=resource_id %}">
+          {{ day_data.day }}
+      </a>
+          {% endif %}
+      </td>
+      {% endfor %}
+  </tr>
+  {% endfor %}
+</table> {% endcomment %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Name REsouce</th>
+        <th scope="col">Name Faculty</th>
+        <th scope="col">Start date</th>
+        <th scope="col">End date</th>
+        <th scope="col">Start time</th>
+        <th scope="col">End time</th>
+        <th scope="col">Dec</th>
+        <th scope="col">Total Participents</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for book in data %}
+        <tr>
+          <th scope="row">{{book.bid}}</th>
+          <td>{{book.rid.rname}}</td>
+              <td>{{book.uname}}</td>
+              <td>{{book.sdate}}</td>
+              <td>{{book.edate}}</td>
+              <td>{{book.stime}}</td>
+              <td>{{book.etime}}</td>
+              <td>{{book.desc}}</td>
+              <td>{{book.tot}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+ <form action="/bookform" method="POST">
+    {% csrf_token %}
+    <center>
+        <button type="submit" class="btn btn-success">Book</button>
+    </center>
+ </form>
+
+{% include "footer.html" %}

@@ -1,0 +1,32 @@
+{% include "Admin_header.html" %}
+
+{% comment %} Start Content {% endcomment %}
+
+<div class="container">
+    {%include 'alert.html' %}
+    <center><h1>Add Admin</h1></center>
+    <br><br>
+    <form method="post" action="add_Admin">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="user" placeholder="Enter username" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="email" placeholder="Enter Email" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="pass1" placeholder="Enter Password" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="pass2" placeholder="Enter Confirm Password" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputUser" aria-describedby="emailHelp" name="roll" placeholder="Enter Roll" required>
+        </div>
+        <br>
+        <center><button type="submit" class="btn btn-primary">Add Admin</button></center>
+    </form>
+</div>
+
+{% comment %} End Content {% endcomment %}
+ {% include "Admin_footer.html" %}

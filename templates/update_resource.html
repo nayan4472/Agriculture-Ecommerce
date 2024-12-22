@@ -1,0 +1,24 @@
+{% include "Admin_header.html" %}
+
+{% comment %} Start Content {% endcomment %}
+
+<div class="booking_form">
+    <h1>Update Resource</h1>
+    <br>
+    <div class="form">
+        <form method="post" action="{{stu.id}}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputPassword1">Resource Name : </label><br>
+              
+              <input type="text" class="form-control" name="rname" value="{{data.rname}}">
+            </div>
+            <br>
+            <center><button type="submit" class="btn btn-primary">Submit</button></center>
+        </form>         
+        <br>
+    </div>
+</div>
+
+{% comment %} End Content {% endcomment %}
+ {% include "Admin_footer.html" %}

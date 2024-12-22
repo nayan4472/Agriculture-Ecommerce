@@ -1,0 +1,37 @@
+{% include "Admin_header.html" %}
+{%include 'alert.html' %}
+{% comment %} Start Content {% endcomment %}
+
+<center><h1>Admin's Detail </h1></center>
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">User</th>
+            <th scope="col">Email </th>
+            <th scope="col">Password </th>
+            <th scope="col">Comfirm Password </th>
+            <th scope="col">Opration</th>
+          </tr>
+        </thead>
+        <tbody>
+        {%for show in data%}
+          <tr>
+            <td scope="row">{{show.id}}</td>
+            <td>{{show.user}}</td>
+            <td>{{show.email}}</td>
+            <td>{{show.pass1}}</td>
+            <td>{{show.pass2}}</td>
+            <td>
+                <a href="edit_admin/{{show.id}}">Edit</a>
+                <a href="delete_admin/{{show.id}}">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% comment %} End Content {% endcomment %}
+ {% include "Admin_footer.html" %}
